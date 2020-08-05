@@ -1,0 +1,72 @@
+<div class="container-fluid" style="min-width: 100% !important; min-height: 210mm !important;">
+    <div class="row d-flex align-items-end justify-content-end">
+        <div class="col-xs-12 text-center" style="font-weight: bold; font-size: 17px">
+            BETOMATIC MIDDLE EAST<br>
+            PO BOX. 30341<br>
+            SHARJAH, U.A.E<br>
+            TEL:06-5396963  FAX:06-53996996
+        </div>
+    </div>
+
+    <div class="row" style="padding-top: 15px; font-size: 15px; border-bottom: 4px solid grey;">
+        <div class="col-xs-12 text-center">
+            <b>STATEMENT OF ACCOUNT</b><br>
+        </div>
+    </div>
+    
+    <div class="row d-flex align-items-end justify-content-between" style="padding-top: 10px; font-size: 13px">
+        <div class="col-xs-8">
+            Code: {{ filters.customer }}<br>
+            Name: {{ filters.customer_name }}<br>
+            Attention: Accounts Departnemt
+        </div>
+        <div class="col-xs-4 text-right">
+            Date: {{ frappe.datetime.get_today() }}<br>
+        </div>
+    </div>
+
+    <table class="table table-bordered text-wrap" style="overflow-x: hidden; table-layout: fixed; font-size:13px !important">
+        <thead>
+            <tr class="table-info" style="font-weight: bold;">
+                <td style="width:13%;">Date</td>
+                <td># No</td>
+                <td style="width:25%;">Reference</td>
+                <td style="width:18%;">Amount AED</td>
+            </tr> 
+        </thead>
+        <tbody>
+            {% for(var i=0, l=data.length-1; i<l; i++) { %}
+                <tr class="table-info">
+                    <td style="text-align: center;">{%= data[i]["posting_date"] %}</td>
+                    <td>{%= data[i]["voucher_no"] %}</td>
+                    <td>{%= data[i]["remarks"] %}</td>
+                    <td>{%= format_currency(data[i]["outstanding"], data[0]["currency"]) %}</td>
+                </tr>
+            {% } %}
+        </tbody>
+        <tfoot>
+            <tr class="table-info">
+                    <td></td>
+                    <td></td>
+                    <td style="text-align: right">Total amount due</td>
+                    <td>{%= format_currency(data[data.length-1]["outstanding"], data[0]["currency"]) %}</td>
+                </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="container-fluid">
+    <div class="row d-flex align-items-end justify-content-between" style="padding-bottom: 5px; padding-top: 10px; font-size: 13px">
+        <div class="col-xs-10">
+            Our records show above outstanding in your account.<br>
+            Kindly arrange the balance to avoid any inconvience ASAP.<br>
+            Your response will be appreciated.<br>
+        </div>
+    </div>
+
+    <div class="row d-flex align-items-end justify-content-between" style="padding-top: 3%; font-size: 13px;">
+        <div class="col-xs-12">
+            Betomatic Middle East<br>
+            Accounts Department
+        </div>
+    </div>
+</div>
