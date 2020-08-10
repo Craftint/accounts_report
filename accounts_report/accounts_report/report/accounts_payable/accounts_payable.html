@@ -18,10 +18,9 @@
         </div>
     </div>
     
-    <div class="row d-flex align-items-end justify-content-between" style="padding-top: 7px; border-bottom: 4px solid grey;padding-top: 10px; font-size: 13px">
+    <div class="row d-flex align-items-end justify-content-between" style="padding-top: 10px; font-size: 13px">
         <div class="col-xs-8">
-            Code: {{ filters.supplier }}<br>
-            Name: {{ filters.supplier_name }}<br><br>
+            Supplier: {{ filters.supplier }}<br><br>
             Attention: Accounts Departnemt
         </div>
         <div class="col-xs-4 text-right">
@@ -34,7 +33,7 @@
             <tr class="table-info" style="font-weight: bold;">
                 <td style="width:13%;">Date</td>
                 <td># No</td>
-                <td style="width:25%;">Reference</td>
+                <td style="width:25%;">Remarks</td>
                 <td style="width:18%;">Amount AED</td>
             </tr> 
         </thead>
@@ -43,7 +42,7 @@
                 <tr class="table-info">
                     <td style="text-align: center;">{%= frappe.datetime.str_to_user(data[i]["posting_date"]) %}</td>
                     <td>{%= data[i]["voucher_no"] %}</td>
-                    <td>{%= data[i]["customer_lpo"] %}</td>
+                    <td>{%= data[i]["remarks"] %}</td>
                     <td>{%= format_currency(data[i]["outstanding"], data[0]["currency"]) %}</td>
                 </tr>
             {% } %}
