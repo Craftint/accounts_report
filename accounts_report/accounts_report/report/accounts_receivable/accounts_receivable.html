@@ -43,7 +43,7 @@
                 <tr class="table-info">
                     <td style="text-align: center;">{%= frappe.datetime.str_to_user(data[i]["posting_date"]) %}</td>
                     <td>{%= data[i]["voucher_no"] %}</td>
-                    <td>{%= data[i]["customer_lpo"] %}</td>
+                    <td>{%= data[i]["po_no"] %}</td>
                     <td>{%= format_currency(data[i]["outstanding"], data[0]["currency"]) %}</td>
                 </tr>
             {% } %}
